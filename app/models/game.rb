@@ -3,9 +3,8 @@ class Game < ActiveRecord::Base
   require "latinSquareGenerator"
   
   def generateSquare
-    @temp = LatinSquareGenerator.Gen_covered_latin_square(self.size, mapLevelPercentage(self.level))
-    puts @temp.inspect
-    return @temp 
+      @temp = LatinSquareGenerator.Gen_covered_latin_square(self.size, mapLevelPercentage(self.level))
+      return @temp
   end
   
   def mapLevelPercentage(level)
