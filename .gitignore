@@ -4,5 +4,6 @@
 /tmp
 .bundle
 .DS_Store
+push_*
 
 
