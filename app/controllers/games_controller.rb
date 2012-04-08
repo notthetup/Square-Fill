@@ -81,4 +81,24 @@ class GamesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def result
+    @game = Game.find(params[:id])
+    
+    puts '*************************' + params['cell00'.to_sym] + ' SIZE: ' + params[:size]
+    @size = params[:size].to_i
+    
+    @inputsquare = Array.new(@size) { Array.new(@size){0} }
+    
+    @inputsquare.each_index do |row_i|
+    	@inputsquare.each_index do |cell_i|
+    	  @inputsquare[row_i][cell_i] = params[('cell' + row_i.to_s + cell_i.to_s).to_sym].to_i
+    	end
+    end  
+     puts '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'
+    puts @inputsquare.inspect
+    
+    @answer = @game.checkSquare(@inputsquare)
+    
+  end
 end

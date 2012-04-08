@@ -2,7 +2,8 @@ Squarefill::Application.routes.draw do
   resources :games
 
   get "pages/home"
-
+  match '/result' => 'games#result' #for test view pages
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

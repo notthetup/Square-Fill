@@ -11,5 +11,9 @@ class Game < ActiveRecord::Base
   def mapLevelPercentage(level)
     return level*10
   end
+  
+  def checkSquare(inputSquare)
+    return LatinSquareGenerator.Check_latin_square(inputSquare)
+  end
        
 end

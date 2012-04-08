@@ -10,22 +10,29 @@
   <%= @game.level %>
 </p>
 
-<table id="square">
-  <% @square.each_index do |row_i| %>
-  <tr>
-    <% @square.each_index do |cell_i| %>
-      <td>
-        <% if @square[row_i][cell_i] == 0 %>
-          <input type="number">
-        <% else %>
-          <%= @square[row_i][cell_i] %>
-        <% end %>
-      </td>
+<%= form_tag result_path, :method => 'get' do %>
+  <table id="square">
+    <%= hidden_field_tag :size, @game.size %>
+    <%= hidden_field_tag :id, @game.id %>
+    
+    <% @square.each_index do |row_i| %>
+    <tr>
+      <% @square.each_index do |cell_i| %>
+        <td>
+          <% @tag = ('cell' + row_i.to_s + cell_i.to_s).to_sym %>
+          <% if @square[row_i][cell_i] == 0 %>
+            <%= number_field_tag @tag, params[@tag] %>
+          <% else %>
+            <%= @square[row_i][cell_i] %>
+            <%= hidden_field_tag @tag, @square[row_i][cell_i] %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
     <% end %>
-  </tr>
-  <% end %>
-</table>
-
+  </table>
+  <%= submit_tag "Check", :name => nil %>
+<% end %>
 
 
 
