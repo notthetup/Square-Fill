@@ -10,11 +10,22 @@
   <%= @game.level %>
 </p>
 
-<% @square.each_index do |row_i| %><br />
-  <% @square.each_index do |cell_i| %>
-    <%= @square[row_i][cell_i] %>
+<table id="square">
+  <% @square.each_index do |row_i| %>
+  <tr>
+    <% @square.each_index do |cell_i| %>
+      <td>
+        <% if @square[row_i][cell_i] == 0 %>
+          <input type="number">
+        <% else %>
+          <%= @square[row_i][cell_i] %>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
   <% end %>
-<% end %>
+</table>
+
 
 
 
