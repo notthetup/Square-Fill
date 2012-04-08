@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Size:</b>
+  <%= @game.size %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @game.level %>
+</p>
+
+<% @square.each_index do |row_i| %><br />
+  <% @square.each_index do |cell_i| %>
+    <%= @square[row_i][cell_i] %>
+  <% end %>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

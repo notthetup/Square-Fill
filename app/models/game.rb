@@ -1,0 +1,15 @@
+class Game < ActiveRecord::Base
+  attr_accessible :level, :size
+  require "latinSquareGenerator"
+  
+  def generateSquare
+    @temp = LatinSquareGenerator.Gen_covered_latin_square(self.size, mapLevelPercentage(self.level))
+    puts @temp.inspect
+    return @temp 
+  end
+  
+  def mapLevelPercentage(level)
+    return level*10
+  end
+       
+end

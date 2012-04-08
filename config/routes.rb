@@ -1,4 +1,6 @@
 Squarefill::Application.routes.draw do
+  resources :games
+
   get "pages/home"
 
   # The priority is based upon order of creation:
@@ -50,7 +52,7 @@ Squarefill::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'pages#home'
+  root :to => 'games#new'
 
   # See how all your routes lay out with "rake routes"
 
