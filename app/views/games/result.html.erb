@@ -1,6 +1,7 @@
+<%= render 'layouts/header'%>
 
 <% if @answer == true %>
-  woohoo!
+  <p id="result">Woohoo! You got all correct! <br />Wanna <%= link_to "play again", root_url %>?</p>
 <% else %>
- boooo :(
+ <p id="result">Ooops :( You got mistakes. <br />Wanna <%= link_to "start a game", root_url %> again?</p>
 <% end %>  

@@ -1,4 +1,5 @@
-<%= form_for(@game) do |f| %>
+<div id="insert-param">
+  <%= form_for(@game) do |f| %>
   <% if @game.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
@@ -11,15 +12,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :size %><br />
-    <%= f.number_field :size %>
-  </div>
-  <div class="field">
-    <%= f.label :level %><br />
-    <%= f.number_field :level %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.number_field :size, :placeholder => "Enter size of square", :min => 2, :max => 9 %> <br/> 
+    <%= f.number_field :level, :placeholder => "Enter level of difficulty", :min => 2, :max => 5 %><br/>
+    <div class="button"><%= f.submit "Start Game!" %></div>
+  
 <% end %>
+</div>
+

@@ -1,40 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/header'%>
 
-<p>
-  <b>Size:</b>
-  <%= @game.size %>
-</p>
+<p id="notice"><%#= notice %></p>
 
-<p>
-  <b>Level:</b>
-  <%= @game.level %>
-</p>
+<%#= @game.size %><%#= @game.level %>
 
-<%= form_tag result_path, :method => 'get' do %>
-  <table id="square">
-    <%= hidden_field_tag :size, @game.size %>
-    <%= hidden_field_tag :id, @game.id %>
-    
-    <% @square.each_index do |row_i| %>
-    <tr>
-      <% @square.each_index do |cell_i| %>
-        <td>
-          <% @tag = ('cell' + row_i.to_s + cell_i.to_s).to_sym %>
-          <% if @square[row_i][cell_i] == 0 %>
-            <%= number_field_tag @tag, params[@tag] %>
-          <% else %>
-            <%= @square[row_i][cell_i] %>
-            <%= hidden_field_tag @tag, @square[row_i][cell_i] %>
-          <% end %>
-        </td>
+<div id="game">
+  <%= form_tag result_path, :method => 'get' do %>
+    <table class="square">
+      <%= hidden_field_tag :size, @game.size %>
+      <%= hidden_field_tag :id, @game.id %>
+      
+      <% @square.each_index do |row_i| %>
+      <tr>
+        <% @square.each_index do |cell_i| %>
+            <% @tag = ('cell' + row_i.to_s + cell_i.to_s).to_sym %>
+            <% if @square[row_i][cell_i] == 0 %>
+              <td class="fill"><%= number_field_tag @tag, params[@tag], :min => 1, :max => @game.size %></td>
+            <% else %>
+              <td><%= @square[row_i][cell_i] %></td>
+              <%= hidden_field_tag @tag, @square[row_i][cell_i] %>
+            <% end %>
+        <% end %>
+      </tr>
       <% end %>
-    </tr>
-    <% end %>
-  </table>
-  <%= submit_tag "Check", :name => nil %>
-<% end %>
+    </table>
+    <div class="button"><%= submit_tag "Check", :name => nil %></div>
 
+  <% end %>
+</div>
 
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%#= link_to 'Edit', edit_game_path(@game) %>
+<%#= link_to 'Back', games_path %>

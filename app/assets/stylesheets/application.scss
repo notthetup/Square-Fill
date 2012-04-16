@@ -1,23 +1,193 @@
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
 @import "color";
+@import "length";
+@import "boilerplate"; //html5 boilerplate
 
-@import "boilerplate";
+//more resets
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+::-moz-selection { background-color: darken($bgr,20%); color: #fff; text-shadow: none; }
+::selection { background-color: darken($bgr,20%); color: #fff; text-shadow: none; }
+input:focus {
+    outline: none;
+}
 
-table#square{
-  td{
-    border:1px solid black;
-  }
+body{
+	background-color:$bgr;
+}
+.wrapper{
+	@include clearfix;
+	width:$width;
+	margin:0 auto;
+}
+
+header{
+	clear:both;
+	width:100%;
+	margin:0 0 30px 0;
+}
+h1{
+	font-size:8em;
+	color:$text;
+	font-family: 'Arvo', Georgia, Times, serif;
+	margin:0;
+	font-weight:normal;
+	line-height:1.2em;
+	text-shadow: 4px 3px 0px rgba(0,0,0,0.15), 6px 5px 0px #fff;
+}
+
+h2{
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	color: $text;
+	line-height:1em;
+	margin:-10px 0 0 0;
+	font-weight:normal;
+	text-align:right;
+}
+
+table.square{
+	margin:0 auto;
+	border:0;
+	padding:0;
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	text-align: center; 
+	font-size:1.2em;
+	padding:0;
+	color:darken($bgr, 40%);
+
+  	td{
+  		height:$box-size;
+  		width:$box-size;
+	    border:1px solid darken($bgr, 20%);
+	    display: table-cell; 
+	    vertical-align: middle;
+	    &.fill{
+	    	background-color:lighten($bgr, 10%);
+	    	margin:0;
+	    	padding:0;
+	    } 
+  	}
+  	input[type="number"], input[type="hidden"]{
+	    height:$box-size;
+  		width:$box-size;
+  		background-color:lighten($bgr, 10%);
+  		border:0;
+  		margin:0;
+  		text-align:center;
+  		font-size:0.85em;
+  		color:darken($bgr, 40%);
+  		font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	}
+}
+
+#game{
+	width:100%;
+	input[type="submit"]{
+		margin:30px auto;
+		width:100%;
+
+	}	
+}
+ 
+
+form{width:95%;}
+#insert-param input[type="number"]{
+	width:95%;
+	 border: 5px solid white;
+    -webkit-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    -moz-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 30px 0;
+}
+
+.button{
+	width:50%;
+	margin: 0 auto;
+}
+input[type="submit"]{
+	width: 100%;
+	margin:0 auto;
+	-webkit-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    -moz-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    padding: 15px;
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+}
+
+#insert-param{
+	width:430px;
+	margin:40px auto;
+}
+
+#result{
+	color:darken($bgr, 30%);
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	font-size:2em;
+	text-align:center;
+	a{
+		color:darken($bgr, 30%);
+	}
 }
 
 
 
 
 
+@media only screen and (min-width: 240px) {
+  .wrapper{width:95%;}
+  #insert-param{width:85%;}
+  table.square{
+  	td, input[type="number"]{
+  		height:0.6*$box-size;
+  		width:0.6*$box-size;
+  	}
+  	td{
+  		font-size:1.5em;
+  	}
+  	input[type="number"]{
+  		font-size:0.8em;
+  	}
+  }
+}
 
+@media only screen and (min-width: 480px) {
+	table.square{
+		td, input[type="number"]{
+  			height:$box-size;
+  			width:$box-size;
+  		}
+	}
+}
 
+@media only screen and (min-width: 720px) {
+	table.square{
+  		td{
+  			font-size:2em;
+  		}
+  	}
+}
 
-@media only screen and (min-width: 35em) {
-  
-
+@media only screen and (min-width: 960px) {
+  .wrapper{width:960px;}
+  #insert-param{width:430px;}
 }
 
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
